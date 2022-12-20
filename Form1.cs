@@ -15,9 +15,6 @@ namespace courseWork
         Emitter emitter = new Emitter(); // добавили эмиттер
 
         List<Particle> particles = new List<Particle>();
-        
-        private int MousePositionX = 0;
-        private int MousePositionY = 0;
 
         public Form1()
         {

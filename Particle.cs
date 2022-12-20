@@ -12,8 +12,8 @@ namespace courseWork
         public int Radius; 
         public float X; 
         public float Y;
-        public float SpeedX; // скорость перемещения по оси X
-        public float SpeedY; // скорость перемещения по оси Y
+        public float SpeedX; 
+        public float SpeedY; 
 
         public float Life; 
         public static Random rand = new Random();
@@ -35,7 +35,7 @@ namespace courseWork
             float k = Math.Min(1f, Life / 100);
             int alpha = (int)(k * 255);
             
-            var color = Color.FromArgb(alpha, Color.Black);
+            var color = Color.FromArgb(alpha, Color.GreenYellow);
             var b = new SolidBrush(color);
 
             g.FillEllipse(b, X - Radius, Y - Radius, Radius * 2, Radius * 2);
@@ -47,11 +47,9 @@ namespace courseWork
 
     public class ParticleColorful : Particle
     {
-        // два новых поля под цвет начальный и конечный
         public Color FromColor;
         public Color ToColor;
 
-        // для смеси цветов
         public static Color MixColor(Color color1, Color color2, float k)
         {
             return Color.FromArgb(
@@ -62,7 +60,6 @@ namespace courseWork
             );
         }
 
-        // ну и отрисовку перепишем
         public override void Draw(Graphics g)
         {
             float k = Math.Min(1f, Life / 100);
@@ -75,8 +72,4 @@ namespace courseWork
             b.Dispose();
         }
     }
-
-
-
-
 }
