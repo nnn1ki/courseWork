@@ -1,20 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace courseWork
 {
-    class Emitter
+    public class Emitter
     {
         List<Particle> particles = new List<Particle>();
+        public List<IImpactPoint> impactPoints = new List<IImpactPoint>();
+
         public int MousePositionX;
         public int MousePositionY;
 
         public float GravitationX = 0;
-        public float GravitationY = 1; 
+        public float GravitationY = 0; //отключили гравитацию 
 
         public void UpdateState()
         {
@@ -38,10 +41,15 @@ namespace courseWork
                 }
                 else
                 {
+                    foreach (var point in impactPoints)
+                    {
+                        point.ImpactParticle(particle);
+                    }
+
+                    // это не трогаем
                     particle.SpeedX += GravitationX;
                     particle.SpeedY += GravitationY;
 
-                    // это не трогаем
                     particle.X += particle.SpeedX;
                     particle.Y += particle.SpeedY;
                 }
@@ -71,6 +79,11 @@ namespace courseWork
             foreach (var particle in particles)
             {
                 particle.Draw(g);
+            }
+
+            foreach (var point in impactPoints) //рендер точек притяжения
+            {
+                point.Render(g);
             }
         }
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace courseWork
 {
@@ -35,7 +36,7 @@ namespace courseWork
             float k = Math.Min(1f, Life / 100);
             int alpha = (int)(k * 255);
             
-            var color = Color.FromArgb(alpha, Color.GreenYellow);
+            var color = Color.FromArgb(alpha, Color.Black);
             var b = new SolidBrush(color);
 
             g.FillEllipse(b, X - Radius, Y - Radius, Radius * 2, Radius * 2);
