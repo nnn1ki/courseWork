@@ -19,24 +19,26 @@ namespace courseWork
         public float Life; 
         public static Random rand = new Random();
 
+        //конструктор класса 
         public Particle()
         {
             var direction = (double)rand.Next(360);
             var speed = 1 + rand.Next(10);
 
-            SpeedX = (float)(Math.Cos(direction / 180 * Math.PI) * speed);
-            SpeedY = -(float)(Math.Sin(direction / 180 * Math.PI) * speed);
+            SpeedX = (float)(Math.Cos(direction / 180 * Math.PI) * speed); //задаем векторную скорость по иксу
+            SpeedY = -(float)(Math.Sin(direction / 180 * Math.PI) * speed); //задаем векторную скорость по игрику
 
-            Radius = 2 + rand.Next(10);
-            Life = 20 + rand.Next(100);
+            Radius = 2 + rand.Next(10); //генерируем радиус частицы
+            Life = 20 + rand.Next(100); //ее время жизни
         }
 
+        //отрисовка частицы
         public virtual void Draw(Graphics g)
         {
-            float k = Math.Min(1f, Life / 100);
-            int alpha = (int)(k * 255);
+            float k = Math.Min(1f, Life / 100); //коэф прозрачности
+            int alpha = (int)(k * 255); //измение цвета из-за прозрачности
 
-            var color = Color.FromArgb(alpha, Color.White);
+            var color = Color.FromArgb(alpha, Color.White); 
             var b = new SolidBrush(color);
 
             g.FillEllipse(b, X - Radius, Y - Radius, Radius * 2, Radius * 2);
@@ -45,12 +47,13 @@ namespace courseWork
 
     }
 
-
+    //подкласс цыетных частиц
     public class ParticleColorful : Particle
     {
-        public Color FromColor;
-        public Color ToColor;
+        public Color FromColor; //начальный цыет
+        public Color ToColor; //конечный цвет
 
+        //смешивание цыетов
         public static Color MixColor(Color color1, Color color2, float k)
         {
             return Color.FromArgb(
@@ -61,6 +64,7 @@ namespace courseWork
             );
         }
 
+        //отрисовка на экране 
         public override void Draw(Graphics g)
         {
             float k = Math.Min(1f, Life / 100);
@@ -69,7 +73,6 @@ namespace courseWork
             var b = new SolidBrush(color);
 
             g.FillEllipse(b, X - Radius, Y - Radius, Radius * 2, Radius * 2);
-
             b.Dispose();
         }
     }

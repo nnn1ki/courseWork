@@ -41,7 +41,7 @@ namespace courseWork
         public int MousePositionY;
 
         public float GravitationX = 0;
-        public float GravitationY = 0; //отключили гравитацию 
+        public float GravitationY = 1; //отключили гравитацию 
 
         public virtual Particle CreateParticle()
         {
@@ -52,54 +52,37 @@ namespace courseWork
             return particle;
         }
 
+        //обновление положения
         public void UpdateState()
         {
-            int particlesToCreate = ParticlesPerTick;
+            int particlesToCreate = ParticlesPerTick; //количество точек в один такт таймера
+
+            
 
             foreach (var particle in particles)
             {
-                if (particle.Life <= 0)
+                particle.Life -= 1;
+                if (particle.Life < 0)
                 {
-                    if (particlesToCreate > 0)
-                    {
-                        /* у нас как сброс частицы равносилен созданию частицы */
-                        particlesToCreate -= 1; // поэтому уменьшаем счётчик созданных частиц на 1
-                        ResetParticle(particle);
-                    }
+                    particlesToCreate -= 1;
+                    ResetParticle(particle);
                 }
                 else
                 {
-                    foreach (var point in impactPoints)
-                    {
-                        point.ImpactParticle(particle);
-                    }
-
-                    // это не трогаем
+                    // гравитация воздействует на вектор скорости, поэтому пересчитываем его
                     particle.SpeedX += GravitationX;
                     particle.SpeedY += GravitationY;
-
                     particle.X += particle.SpeedX;
                     particle.Y += particle.SpeedY;
                 }
+            }
 
-                for (var i = 0; i < 10; ++i)
-                {
-                    if (particles.Count < ParticlesCount)
-                    {
-
-                        //var part = new ParticleColorful();
-                        //part.FromColor = Color.Yellow;
-                        //part.ToColor = Color.FromArgb(0, Color.Magenta);
-
-                        var part = CreateParticle(); // и собственно теперь тут его вызываем
-                        ResetParticle(part);
-                        particles.Add(part);
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
+            while (particlesToCreate >= 1)
+            {
+                particlesToCreate -= 1;
+                var particle = CreateParticle();
+                ResetParticle(particle);
+                particles.Add(particle);
             }
         }
 
