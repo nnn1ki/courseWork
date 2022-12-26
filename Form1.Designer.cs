@@ -44,16 +44,11 @@ namespace courseWork
             this.lbSpeed = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.tbSpeed = new System.Windows.Forms.TrackBar();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tbGraviti = new System.Windows.Forms.TrackBar();
-            this.lbPower = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picDisplay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDirection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSpreading)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbPerTic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSpeed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbGraviti)).BeginInit();
             this.SuspendLayout();
             // 
             // picDisplay
@@ -174,49 +169,11 @@ namespace courseWork
             this.tbSpeed.TabIndex = 10;
             this.tbSpeed.Scroll += new System.EventHandler(this.tbSpeed_Scroll);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1089, 395);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 17);
-            this.label4.TabIndex = 15;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(826, 361);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(120, 17);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Сила гравитации";
-            // 
-            // tbGraviti
-            // 
-            this.tbGraviti.Location = new System.Drawing.Point(814, 384);
-            this.tbGraviti.Maximum = 500;
-            this.tbGraviti.Name = "tbGraviti";
-            this.tbGraviti.Size = new System.Drawing.Size(275, 56);
-            this.tbGraviti.TabIndex = 13;
-            this.tbGraviti.Scroll += new System.EventHandler(this.tbGraviti_Scroll);
-            // 
-            // lbPower
-            // 
-            this.lbPower.AutoSize = true;
-            this.lbPower.Location = new System.Drawing.Point(1107, 395);
-            this.lbPower.Name = "lbPower";
-            this.lbPower.Size = new System.Drawing.Size(0, 17);
-            this.lbPower.TabIndex = 16;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1165, 510);
-            this.Controls.Add(this.lbPower);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.tbGraviti);
             this.Controls.Add(this.lbSpeed);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.tbSpeed);
@@ -237,7 +194,6 @@ namespace courseWork
             ((System.ComponentModel.ISupportInitialize)(this.tbSpreading)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbPerTic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSpeed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbGraviti)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,10 +215,6 @@ namespace courseWork
         private System.Windows.Forms.Label lbSpeed;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TrackBar tbSpeed;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TrackBar tbGraviti;
-        private System.Windows.Forms.Label lbPower;
     }
 }
 
